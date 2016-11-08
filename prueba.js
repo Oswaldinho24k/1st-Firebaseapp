@@ -45,6 +45,9 @@
 
 	//Inicia el Logueo
 	var provider = new firebase.auth.FacebookAuthProvider();
+
+
+//iniciar sesión
 	var iniciar = function(){
 		firebase.auth().signInWithPopup(provider).then(function(result) {
   	// This gives you a Facebook Access Token. You can use it to access the Facebook API.
@@ -61,23 +64,9 @@
 	}).catch(function(error) {
   	// Handle Errors here.
   		console.log(error);
-  // ...
 	});
 	};
-
-	firebase.auth().onAuthStateChanged(function(user) {
-	  if (user) {
-	  //$('h1').append(user.displayName);
-	  //$('#perfil').attr('src',user.photoURL);
-		  $('#charla').show();
-		  $('#ini').hide(); 
-		} else {
-		  $('#charla').hide();
-		  $('#ini').show();   }
-	});
-
-
-
+//cerrar sesión
 	var cerrar = function(){
 		firebase.auth().signOut().then(function() {
 		 
@@ -88,6 +77,17 @@
 		console.log(error);
 	});
 	};
+
+	//checar sesión
+	firebase.auth().onAuthStateChanged(function(user) {
+	  if (user) {
+	    $('#charla').show();
+  		$('#ini').hide();
+	  } else {
+	    $('#charla').hide();
+	  	$('#ini').show();
+	  }
+	});
 	
 
 	

@@ -34,12 +34,15 @@
 		//document.getElementById('mensajes').append('=>  ' + paper  );
 		$('#mensajes').append('<img class="img-circle" src="'+ img +'">');
 		$('#mensajes').append(person +' =>'+paper+"<br>");
-		
-		
 		var elem = document.getElementById('nel');
 		elem.scrollTop = elem.scrollHeight;
+		
+		
+		
 
 	});
+
+
 	//Inicia el Logueo
 	var provider = new firebase.auth.FacebookAuthProvider();
 	var iniciar = function(){
@@ -49,6 +52,11 @@
   	// The signed-in user info.
   		var user = result.user;
   		console.log(user.displayName);
+  		
+
+  		$('#charla').show();
+  		$('#ini').hide();
+
   	// ...
 	}).catch(function(error) {
   	// Handle Errors here.
@@ -56,15 +64,30 @@
   // ...
 	});
 	};
+
+	firebase.auth().onAuthStateChanged(function(user) {
+	  if (user) {
+	  //$('h1').append(user.displayName);
+	  //$('#perfil').attr('src',user.photoURL);
+		  $('#charla').show();
+		  $('#ini').hide(); 
+		} else {
+		  $('#charla').hide();
+		  $('#ini').show();   }
+	});
+
+
+
 	var cerrar = function(){
 		firebase.auth().signOut().then(function() {
 		 
-	  	
+	  	$('#charla').hide();
+	  	$('#ini').show();
   	}, 
   	function(error) {
 		console.log(error);
-});
-	}
+	});
+	};
 	
 
 	
