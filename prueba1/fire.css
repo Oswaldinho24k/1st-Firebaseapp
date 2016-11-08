@@ -8,7 +8,8 @@
 .mensajes img{
 	width:5vh;
 }
-#ini{
+.ini{
 	background-color: blue;
 	overflow-y: auto;
+	
 }

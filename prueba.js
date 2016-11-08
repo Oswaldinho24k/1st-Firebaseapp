@@ -15,6 +15,8 @@
 
 	
 
+	
+
 	function writeUserData() {
 		var user = firebase.auth().currentUser;
 		var m = document.getElementById('mes').value;
@@ -44,7 +46,9 @@
 
 
 	//Inicia el Logueo
-	var provider = new firebase.auth.FacebookAuthProvider();
+var provider = new firebase.auth.FacebookAuthProvider();
+	//checar sesión
+	
 
 
 //iniciar sesión
@@ -90,5 +94,13 @@
 	});
 	
 
-	
+	firebase.auth().onAuthStateChanged(function(user) {
+	  if (user) {
+	    $('#charla').show();
+  		$('#ini').hide();
+	  } else {
+	    $('#charla').hide();
+	  	$('#ini').show();
+	  }
+	});
 
