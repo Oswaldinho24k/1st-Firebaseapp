@@ -1,0 +1,14 @@
+.well{
+	max-height: 50vh;
+	overflow-y: scroll;
+}
+.mensajes{
+	padding: 0 50px 0 50px;
+}
+.mensajes img{
+	width:5vh;
+}
+#ini{
+	background-color: blue;
+	overflow-y: auto;
+}

@@ -14,43 +14,31 @@
 
 
  
-
+<section class="container">
 
 	<nav class="navbar navbar-default ">
 
-		<h1 align="center">Bonjouuuuur 😉</h1>
-		
-		
-	</nav>
-<section class="container">
-	<div id="charla">
-		<div id="nel" class="well" >
-			<div id="mensajes" class="mensajes"></div>	
-		</div>
-		<hr>
-		<form class="form-inline" align="center">
-			<input  class="form-control" id="mes" type="text" placeholder="Say something">
-			<input class="btn btn-default" type="submit" value="Ahí va 😘" onclick="writeUserData()">
-			<button id="logout" type="button" class="btn btn-warning" onclick="cerrar()">Cerrar Sesión</button>
-		</form>
-
-		
-	</div>
-	<div id="ini" class="well">
-		<h3 align="center">¡Inicia sesión please!</h3>
+		<h1 align="center">Oswaldinho Chat</h1>
 		<div align="center">
 			<button id="login" type="button" class="btn btn-primary " onclick="iniciar()">Inicia Sesión</button>
-			
+			<button id="logout" type="button" class="btn btn-warning" onclick="cerrar()">Cerrar Sesión</button>
 		</div>
-	</div>
+		
+	</nav>
 	
+	<div id="nel" class="well" >
+		<p id="mensajes" class="mensajes"></p>
+	</div>
+	<form class="form-inline">
+		<input  class="form-control" id="mes" type="text" placeholder="Say something">
+		<input class="btn btn-default" type="submit" value="Ahí va 😘" onclick="writeUserData()">
+	</form>
 </section>
 
-<!--firebase-->
-<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
-<!--app scripts-->
-<script src="prueba.js"></script>
-<!--JQuery-->
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 
 <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -62,6 +50,7 @@
 
 
 
-
+<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+<script src="prueba.js"></script>
 </body>
 </html>
