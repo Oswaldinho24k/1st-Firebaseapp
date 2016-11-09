@@ -1,6 +1,4 @@
-
-  // Initialize Firebase
-  var config = {
+var config = {
     apiKey: "AIzaSyDl82jej8nFF4TJOyl8Kuho1-5AT9wPorc",
     authDomain: "fcmosw.firebaseapp.com",
     databaseURL: "https://fcmosw.firebaseio.com",
@@ -9,45 +7,71 @@
   };
   firebase.initializeApp(config);
 
-// Get a reference to the database service
-	var database = firebase.database();
-	var papelito = database.ref('pizza/');
+  //Referencia a la base de datos
+var database = firebase.database().ref('papelito');
+
+//ocultamos todo
+
+
+
+	//checar sesión
+	firebase.auth().onAuthStateChanged(function(user) {
+	if (user) {
+		$('#charla').show();
+		$('#ini').hide();
+		$('#nel').scrollTop($('#nel')[0].scrollHeight - $('#nel')[0].clientHeight);
+	} else {
+		$('#charla').hide();
+		$('#ini').show();
+		}
+	});
 
 	
 
-	function writeUserData() {
-		var user = firebase.auth().currentUser;
-		var m = document.getElementById('mes').value;
-		papelito.push({
-		username: m,
+function writeUserData() {
+
+	
+
+	var user = firebase.auth().currentUser;
+	var message = $('#mes').val();
+	database.push({
+		text:message,
 		name: user.displayName,
-		link:user.photoURL
-
-		});
-		document.getElementById('mes').value = "";  	
-	}
-	papelito.on('child_added', function(data) {
-		//console.log(data.val().username)
-		var paper = data.val().username;
-		var person = data.val().name;
-		var img = data.val().link;
-		//document.getElementById('mensajes').append('=>  ' + paper  );
-		$('#mensajes').append('<img class="img-circle" src="'+ img +'">');
-		$('#mensajes').append(person +' =>'+paper+"<br>");
-		var elem = document.getElementById('nel');
-		elem.scrollTop = elem.scrollHeight;
-		
-		
-		
-
+		link: user.photoURL		
 	});
+	$('#mes').val('');
+	$('#nel').scrollTop($('#nel')[0].scrollHeight - $('#nel')[0].clientHeight);
+	//emojis
+	
+
+	
+}
+
+database.on('child_added', function(data) {
+	var text = data.val().text;
+	var name = data.val().name;
+	var img = data.val().link;
+
+	$('#mensajes').append('<img class="img-circle" src="'+ img +'">');
+	$('#mensajes').append(name +' =>'+text+"<br>");
+	
+	
+});
+var elem = $('#mensajes');
+	elem.scrollTop = elem.scrollHeight;	 
+
+$("#mes").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#send").click();
+    }
+});
 
 
-	//Inicia el Logueo
-	var provider = new firebase.auth.FacebookAuthProvider();
 
-
-//iniciar sesión
+//Inicia el Logueo
+var provider = new firebase.auth.FacebookAuthProvider();
+	//checar sesión
+  //iniciar sesión
 	var iniciar = function(){
 		firebase.auth().signInWithPopup(provider).then(function(result) {
   	// This gives you a Facebook Access Token. You can use it to access the Facebook API.
@@ -59,6 +83,7 @@
 
   		$('#charla').show();
   		$('#ini').hide();
+  		$('#nel').scrollTop($('#nel')[0].scrollHeight - $('#nel')[0].clientHeight);
 
   	// ...
 	}).catch(function(error) {
@@ -78,17 +103,8 @@
 	});
 	};
 
-	//checar sesión
-	firebase.auth().onAuthStateChanged(function(user) {
-	  if (user) {
-	    $('#charla').show();
-  		$('#ini').hide();
-	  } else {
-	    $('#charla').hide();
-	  	$('#ini').show();
-	  }
-	});
-	
+//emojis
+ 
 
-	
+ 
 

@@ -13,3 +13,7 @@
 	overflow-y: auto;
 	
 }
+.caja{
+	display: flex;
+	justify-content: center;
+}

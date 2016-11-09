@@ -8,6 +8,10 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+
+
 </head>
 <body>
 
@@ -23,20 +27,8 @@
 		
 	</nav>
 <section class="container">
-	<div id="charla">
-		<div id="nel" class="well" >
-			<div id="mensajes" class="mensajes"></div>	
-		</div>
-		<hr>
-		<form class="form-inline" align="center">
-			<input  class="form-control" id="mes" type="text" placeholder="Say something">
-			<input class="btn btn-default" type="submit" value="Ahí va 😘" onclick="writeUserData()">
-			<button id="logout" type="button" class="btn btn-warning" onclick="cerrar()">Cerrar Sesión</button>
-		</form>
 
-		
-	</div>
-	<div id="ini" class="well ini">
+	<div style="display:none" id="ini" class="well ini">
 		<h3 align="center">¡Inicia sesión please!</h3>
 		<div align="center">
 			<button id="login" type="button" class="btn btn-primary " onclick="iniciar()">Inicia Sesión</button>
@@ -44,12 +36,30 @@
 		</div>
 	</div>
 	
+	<div style="display:none" id="charla">
+		<div id="nel" class="well" >
+			<div id="mensajes" class="mensajes"></div>	
+		</div>
+		<hr>
+		<div class="caja">
+			<input  class="form-control" id="mes" type="text" placeholder="Say something">
+			<button id="send" class="btn btn-default" onclick="writeUserData()">Enviar</button>
+			
+		</div>
+		<br>
+			<button id="logout" type="button" class="btn btn-warning" onclick="cerrar()">Cerrar Sesión</button>
+			
+		
+
+		
+	</div>
+	
+	
 </section>
 
 <!--firebase-->
 <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
-<!--app scripts-->
-<script src="prueba.js"></script>
+
 <!--JQuery-->
 
 <script
@@ -57,8 +67,15 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 
+  <!--app scripts-->
+<script src="prueba.js"></script>
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+
 
 
 
